@@ -1,5 +1,5 @@
 <section>
   @if (heroes$ | async; as heroes) { @for (hero of heroes; track $index) {
-  <a routerLink="/hero">{{ hero.name }}</a>
+  <a routerLink="/hero/{{ hero.id }}">{{ hero.name }}</a>
   } }
 </section>
