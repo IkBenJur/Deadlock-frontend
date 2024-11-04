@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Hero } from '../../types/hero';
 import { AsyncPipe } from '@angular/common';
+import { ContentBlockComponent } from "../content-block/content-block.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, AsyncPipe],
+  imports: [RouterLink, AsyncPipe, ContentBlockComponent],
   templateUrl: './home.component.html'
 })
 export class HomeComponent {

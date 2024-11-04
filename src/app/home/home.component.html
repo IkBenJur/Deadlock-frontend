@@ -3,23 +3,22 @@
     <h1 class="text-3xl">Deadlock Heroes & Builds</h1>
   </section>
 
-  <section class="bg-secondary border border-neutral-600 rounded">
-    <div class="p-2 border-b border-neutral-600">
-        <h2 class="text-xl">Deadlock Heroes</h2>
+  <app-content-block blockTitle="Deadlock Heroes">
+    <div
+      class="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8"
+    >
+      @if (heroes$ | async; as heroes) { @for (hero of heroes; track $index) {
+      <a routerLink="/hero/{{ hero.id }}">
+        <div
+          class="p-1 max-w-56 border border-neutral-600 rounded hover:opacity-80"
+        >
+          <h3 class="text-lg font-medium">{{ hero.name }}</h3>
+          <p class="text-sm font-light text-gray-400 truncate">
+            {{ hero.description }}
+          </p>
+        </div>
+      </a>
+      } }
     </div>
-    <div class="p-2 grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
-      @if (heroes$ | async; as heroes) { 
-        @for (hero of heroes; track $index) {
-            <a 
-                routerLink="/hero/{{ hero.id }}"
-            >
-            <div class="p-1 max-w-56 border border-neutral-600 rounded hover:opacity-80">
-                <h3 class="text-lg font-medium">{{ hero.name }}</h3>
-                <p class="text-sm font-light text-gray-400 truncate">{{ hero.description }}</p>
-            </div>
-            </a>
-        } 
-    }
-    </div>
-  </section>
+  </app-content-block>
 </div>
