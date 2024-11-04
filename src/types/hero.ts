@@ -1,3 +1,5 @@
+import { Ability } from "./ability";
+
 export type Hero = {
   id: number;
   name: string;
@@ -15,20 +17,5 @@ export type Hero = {
   moveSpeed: number;
   sprintSpeed: number;
   stamina: number;
-  abilities: [
-    {
-      name: string;
-      description: string;
-      cooldown: number;
-      upgradeOne: string;
-      upgradeTwo: string;
-      upgradeThree: string;
-      abilityEffects: [
-        {
-          value: number;
-          effect: string;
-        }
-      ];
-    }
-  ];
+  abilities: Ability[];
 };
