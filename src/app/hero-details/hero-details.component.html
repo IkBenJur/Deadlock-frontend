@@ -1,2 +1,5 @@
-<h1>{{ hero.name }}</h1>
-<p>{{ hero.description }}</p>
+@if (hero$ | async; as hero) {
+    <h1>{{ hero.name }}</h1>
+    <p>{{ hero.description }}</p>
+}
+

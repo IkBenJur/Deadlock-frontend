@@ -1,18 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeroService } from '../hero.service';
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Hero } from '../../types/hero';
 
 @Component({
   selector: 'app-hero-details',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './hero-details.component.html',
 })
 export class HeroDetailsComponent {
-  heroService = inject(HeroService);
-  hero;
+  hero$!: Observable<Hero>;
 
-  constructor(heroService: HeroService){
-    this.hero = heroService.getHero(0);
+  constructor(private heroService: HeroService) {}
+
+  ngOnInit(): void {
+    this.hero$ = this.heroService.getHero(1);
   }
-
 }
