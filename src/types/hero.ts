@@ -1,7 +1,7 @@
 import { Ability } from "./ability";
 
 export type Hero = {
-  id: number;
+  heroId: number;
   name: string;
   description: string;
   dps: number;
