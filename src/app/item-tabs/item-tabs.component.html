@@ -1,0 +1,15 @@
+<ul class="flex mb-2">
+  @for (tab of tabs; track $index) {
+  <li
+    [ngClass]="{
+      'text-violet-700 border-b-violet-700 hover:border-b-violet-600 hover:text-violet-600':
+        tab.active
+    }"
+    class="p-2 w-full text-xs sm:text-base md:text-lg text-center text-neutral-400 font-semibold border-b hover:cursor-pointer hover:border-b-neutral-300 hover:text-neutral-300"
+    (click)="selectTab(tab)"
+  >
+    {{ tab.tabTitle }}
+  </li>
+  }
+</ul>
+<ng-content></ng-content>

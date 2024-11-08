@@ -8,7 +8,7 @@
       class="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8"
     >
       @if (heroes$ | async; as heroes) { @for (hero of heroes; track $index) {
-      <a routerLink="/hero/{{ hero.id }}">
+      <a routerLink="/hero/{{ hero.heroId }}">
         <div
           class="p-1 max-w-56 border border-neutral-600 rounded hover:opacity-80"
         >
@@ -21,4 +21,13 @@
       } }
     </div>
   </app-content-block>
+  
+  <app-content-block blockTitle="Deadlock Items">
+      <app-item-tabs>
+          <app-item-tab-item tabTitle="Weapon Items" type="Weapon" ></app-item-tab-item>
+          <app-item-tab-item tabTitle="Spirit Items" type="Spirit" ></app-item-tab-item>
+          <app-item-tab-item tabTitle="Vitality Items" type="Vitality" ></app-item-tab-item>
+      </app-item-tabs>
+  </app-content-block>
 </div>
+

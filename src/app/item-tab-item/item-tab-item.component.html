@@ -1,0 +1,22 @@
+<div [hidden]="!active">
+  @if(items$ | async; as items) { 
+        <div class="grid gap-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-10">
+            @for (item of items; track $index) {
+                    <div class="flex flex-col w-full max-w-36 h-36 mx-auto">
+                        <div 
+                            [ngClass]="{'Weapon': 'bg-orange-400', 'Spirit': 'bg-violet-700', 'Vitality': 'bg-lime-500'}[type]"
+                            class="flex h-1/2 p-2 rounded-t-md justify-center align-middle"
+                            >
+                            <img 
+                                class="h-12"
+                                src="https://metabattle.com/deadlock/images/thumb/8/8d/Basic_Magazine.webp/36px-Basic_Magazine.webp.png" 
+                            />
+                        </div>
+                        <div class="p-2 h-1/2 rounded-b-md bg-orange-200">
+                            <h2 class="text-md sm:text-xl text-center text-gray-800 font-semibold">{{ item.name }}</h2>
+                        </div>
+                    </div>
+            } 
+        </div>
+    }
+</div>
