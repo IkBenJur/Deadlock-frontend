@@ -1,0 +1,11 @@
+<div class="border-2 border-neutral-600 rounded-md">
+    <div class="bg-secondary p-2">
+        <p>{{ name }}</p>
+    </div>
+    
+    <div class="bg-tertriary p-2 grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-12">
+        @for (item of items; track $index) {
+            <app-item-card [item]="item"></app-item-card>
+        }
+    </div>
+</div>

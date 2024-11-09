@@ -1,0 +1,24 @@
+<div class="flex flex-col w-full max-w-36 h-36 mx-auto">
+  <div
+    [ngClass]="
+      {
+        Weapon: 'bg-orange-400',
+        Spirit: 'bg-violet-700',
+        Vitality: 'bg-lime-500'
+      }[item.type]
+    "
+    class="flex h-1/2 p-1 sm:p-2 rounded-t-md"
+  >
+    <div class="m-auto">
+      <img
+        class="h-6 sm:h-12"
+        src="https://metabattle.com/deadlock/images/thumb/8/8d/Basic_Magazine.webp/36px-Basic_Magazine.webp.png"
+      />
+    </div>
+  </div>
+  <div class="p-1 sm:p-2 h-1/2 rounded-b-md bg-orange-200">
+    <h2 class="text-base sm:text-xl text-center text-gray-800 sm:font-semibold">
+      {{ item.name }}
+    </h2>
+  </div>
+</div>

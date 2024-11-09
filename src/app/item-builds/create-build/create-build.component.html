@@ -1,0 +1,63 @@
+<form [formGroup]="buildForm" (ngSubmit)="onSubmit()">
+  <div class="sm:grid sm:grid-cols-3 sm:gap-1">
+
+    <div class="border-2 border-neutral-600 rounded-md h-full max-sm:mb-2">
+      <div class="bg-secondary p-2">
+        <p>Build Name</p>
+      </div>
+
+      <div class="bg-tertriary p-2">
+        <textarea
+          class="w-full h-full rounded-sm bg-secondary p-1 resize-none"
+          placeholder="Type the name of your build..."
+          formControlName="name"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class=" border-2 border-neutral-600 rounded-md sm:col-span-2">
+      <div class="bg-secondary p-2">
+        <p>Build description</p>
+      </div>
+
+      <div class="bg-tertriary p-2">
+        <textarea
+          class="w-full h-full rounded-sm bg-secondary p-1 resize-none"
+          placeholder="Type the description of your build..."
+          formControlName="description"
+        ></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  @for (itemSet of itemSets; track $index) {
+  <div class="my-4">
+    <div class="flex gap-1 px-4 mb-2">
+      <div
+        class="p-1 text-sm font-bold text-gray-800 bg-neutral-500 border border-neutral-700 rounded-lg hover:bg-neutral-600 hover:text-gray-900 hover:cursor-pointer"
+        (click)="addItemToItemSet(itemSet)"
+      >
+        Add item
+      </div>
+      <div
+        class="p-1 text-sm font-bold text-gray-800 bg-neutral-500 border border-neutral-700 rounded-lg hover:bg-neutral-600 hover:text-gray-900 hover:cursor-pointer"
+        (click)="removeItemSet(itemSet)"
+      >
+        Remove item set
+      </div>
+    </div>
+    <app-item-set-display
+      [name]="itemSet.name"
+      [items]="itemSet.items"
+    ></app-item-set-display>
+  </div>
+  }
+  <div
+    class="my-2 p-3 bg-neutral-500 text-xl text-center text-gray-800 border-neutral-700 rounded-lg hover:bg-neutral-600 hover:text-gray-900 hover:cursor-pointer"
+    (click)="addItemSet()"
+  >
+    + New Item Set
+  </div>
+  <button  class="bg-green-500 p-1 rounded-sm" type="submit">Create Build</button>
+</form>
