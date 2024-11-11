@@ -1,0 +1,16 @@
+<div class="border-2 border-neutral-600 rounded-md">
+    <div class="flex justify-between bg-secondary py-4 px-4">
+      <div class="flex gap-2">
+        <p class="my-auto">{{ itemSet.name }}</p>
+      </div>
+    </div>
+  
+    <div
+      class="bg-tertriary p-2 grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-12"
+    >
+      @for (item of itemSet.items; track $index) {
+        <app-item-card [item]="item"></app-item-card>
+      }
+    </div>
+  </div>
+  

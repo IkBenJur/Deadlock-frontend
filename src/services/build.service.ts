@@ -18,7 +18,11 @@ export class BuildService {
   }
 
   getAll(): Observable<Build[]> {
-    return this.http.get<Build[]>(`${this.url}`)
+    return this.http.get<Build[]>(`${this.url}/`)
+  }
+
+  getById(id: number): Observable<Build> {
+    return this.http.get<Build>(`${this.url}/${id}`)
   }
 
   getNamesAndDescriptionByHeroId(heroId: number): Observable<BuildNameDescriptionDTO[]> {

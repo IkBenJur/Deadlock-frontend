@@ -1,0 +1,23 @@
+
+
+@if(build$ | async; as build) {
+    <div class="sm:grid sm:grid-cols-3 sm:gap-1">
+      <div class="border-2 border-neutral-600 rounded-md h-full max-sm:mb-2">
+        <app-content-block blockTitle="Name">
+          <p>{{ build.name }}</p>
+        </app-content-block>
+      </div>
+    
+      <div class="border-2 border-neutral-600 rounded-md sm:col-span-2">
+        <app-content-block blockTitle="Description">
+          <p>{{ build.description }}</p>
+        </app-content-block>
+      </div>
+
+      <div class="col-span-5">
+          @for (itemSet of build.itemSets; track $index) {
+            <app-item-set-display [itemSet]="itemSet"></app-item-set-display>
+          }
+      </div>
+    </div>
+}
