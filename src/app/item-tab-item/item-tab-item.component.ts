@@ -1,6 +1,6 @@
 import { Component, Input, TemplateRef } from '@angular/core';
 import { Item } from '../../types/item';
-import { ItemService } from '../item.service';
+import { ItemService } from '../../services/item.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, CommonModule } from '@angular/common';
 

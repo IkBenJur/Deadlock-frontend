@@ -4,7 +4,7 @@ import { ItemCardComponent } from '../item-card/item-card.component';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { ItemService } from '../../item.service';
+import { ItemService } from '../../../services/item.service';
 
 @Component({
   selector: 'app-item-set-display',
