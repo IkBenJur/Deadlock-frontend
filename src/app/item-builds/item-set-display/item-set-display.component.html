@@ -2,14 +2,30 @@
   <div class="flex justify-between bg-secondary py-4 px-4">
     <div class="flex gap-2">
       @if (!isEditEnable) {
-        <p class="">{{ name }}</p>
-        <input type="button" value="Edit" (click)="onEdit()" />
+      <p class="my-auto">{{ name }}</p>
+      <input
+        class="bg-accent py-1 px-2 rounded-md hover:opacity-80 hover:cursor-pointer"
+        type="button"
+        value="Edit"
+        (click)="onEdit()"
+      />
       } @else {
-        <input class="inline-flex bg-secondary border border-accent rounded-lg w-fit" value="{{ name }}" [(ngModel)]="name" />
-        <input type="button" value="Save" (click)="onEdit()" />
+      <input
+        class="inline-flex bg-secondary border border-accent rounded-lg w-fit"
+        value="{{ name }}"
+        [(ngModel)]="name"
+      />
+      <input
+        class="my-auto bg-accent py-1 px-2 rounded-md hover:opacity-80 hover:cursor-pointer"
+        type="button"
+        value="Save"
+        (click)="onEdit()"
+      />
       }
     </div>
-    <div (click)="remove()">Remove item set</div>
+    <div class="my-auto bg-accent py-1 px-2 rounded-md hover:opacity-80 hover:cursor-pointer" (click)="remove()">
+      Remove item set
+    </div>
   </div>
 
   <div
@@ -18,6 +34,11 @@
     @for (item of items; track $index) {
     <app-item-card [item]="item" (click)="removeItem(item)"></app-item-card>
     }
-    <div class="w-full max-w-36 h-36 mx-auto" (click)="addItem()">Add item</div>
+    <div
+      class="w-full max-w-36 h-36 bg-gray-500 mx-auto border-2 border-dashed rounded-lg content-center text-center text-4 font-bold opacity-60 hover:opacity-70 hover:cursor-pointer"
+      (click)="addItem()"
+    >
+      +
+    </div>
   </div>
 </div>
