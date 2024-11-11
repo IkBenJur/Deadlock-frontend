@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../../services/hero.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Hero } from '../../types/hero';

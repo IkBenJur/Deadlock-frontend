@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../../services/hero.service';
 import { RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Hero } from '../../types/hero';
