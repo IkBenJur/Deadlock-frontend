@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Build } from '../types/build';
+import { BuildNameDescriptionDTO } from '../types/BuildNameDescriptionDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class BuildService {
 
   getAll(): Observable<Build[]> {
     return this.http.get<Build[]>(`${this.url}`)
+  }
+
+  getNamesAndDescriptionByHeroId(heroId: number): Observable<BuildNameDescriptionDTO[]> {
+    return this.http.get<BuildNameDescriptionDTO[]>(`${this.url}/hero/name-description/${heroId}`)
   }
 }

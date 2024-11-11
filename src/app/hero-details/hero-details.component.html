@@ -1,147 +1,175 @@
 @if (hero$ | async; as hero) {
-<div class="flex flex-col gap-5">
-  <section class="bg-secondary p-4 border border-neutral-600 rounded">
-    <h1 class="text-3xl">{{ hero.name }}</h1>
-  </section>
-
   <div class="flex flex-col gap-3 md:grid md:grid-cols-5">
     <section class="flex flex-col gap-5 md:col-span-3">
-        <app-content-block blockTitle="Deadlock Kelvin Description">
-          <p>{{ hero.description }}</p>
-        </app-content-block>
+      <section
+        class="bg-secondary p-4 h-fit border border-neutral-600 rounded md:col-span-3"
+      >
+        <h1 class="text-3xl">{{ hero.name }}</h1>
+      </section>
 
-        <app-content-block blockTitle="Kelvin Abilities">
-            <div class="flex flex-col gap-5">
-              @for (ability of abilities; track $index) {
-              <div class="text-center">
-                <div class="p-2 bg-tertriary border border-neutral-600">
-                  <h3 class="text-lg font-semibold">
-                    {{ ability.name }} ({{ ability.abilityNumber }})
-                  </h3>
-                </div>
-      
-                <div class="p-4 border border-neutral-600">
-                  {{ ability.description }}
-                </div>
-      
-                <div class="grid grid-cols-3">
-                  <div class="p-2 border border-neutral-600">
-                    {{ ability.cooldown }}s cooldown
-                  </div>
-                  @for (effect of ability.abilityEffects; track $index) {
-                  <div class="p-2 border border-neutral-600">
-                    {{ effect.value }} {{ effect.effect }}
-                  </div>
-                  }
-                </div>
+      <app-content-block blockTitle="Deadlock {{ hero.name }} Description">
+        <p>{{ hero.description }}</p>
+      </app-content-block>
+
+      <app-content-block blockTitle="{{ hero.name }} Abilities">
+        <div class="flex flex-col gap-5">
+          @for (ability of abilities; track $index) {
+          <div class="text-center">
+            <div class="p-2 bg-tertriary border border-neutral-600">
+              <h3 class="text-lg font-semibold">
+                {{ ability.name }} ({{ ability.abilityNumber }})
+              </h3>
+            </div>
+
+            <div class="p-4 border border-neutral-600">
+              {{ ability.description }}
+            </div>
+
+            <div class="grid grid-cols-3">
+              <div class="p-2 border border-neutral-600">
+                {{ ability.cooldown }}s cooldown
               </div>
-              } @empty {
-              <p>No abilities found</p>
+              @for (effect of ability.abilityEffects; track $index) {
+              <div class="p-2 border border-neutral-600">
+                {{ effect.value }} {{ effect.effect }}
+              </div>
               }
             </div>
-          </app-content-block>
+          </div>
+          } @empty {
+          <p>No abilities found</p>
+          }
+        </div>
+      </app-content-block>
     </section>
 
     <section class="flex flex-col gap-5 md:col-span-2">
-        <app-content-block blockTitle="Weapon stats">
-          <table class="w-full table-fixed text-gray-300">
-            <tbody class="text-left font-normal border">
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">DPS</td>
-                <td class="p-2 border border-neutral-600">{{ hero.dps }}</td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Bullet Damage
-                </td>
-                <td class="p-2 border border-neutral-600">
-                  {{ hero.bulletDamage }}
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">Ammo</td>
-                <td class="p-2 border border-neutral-600">{{ hero.ammo }}</td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Bullets per Second
-                </td>
-                <td class="p-2 border border-neutral-600">
-                  {{ hero.bulletPerSeconds }}
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Light Melee
-                </td>
-                <td class="p-2 border border-neutral-600">{{ hero.lightMelee }}</td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Heavy Melee
-                </td>
-                <td class="p-2 border border-neutral-600">{{ hero.heavyMelee }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </app-content-block>
-    
-        <app-content-block blockTitle="Vitality stats">
-          <table class="w-full table-fixed text-gray-300">
-            <tbody class="text-left font-normal border">
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Max Health
-                </td>
-                <td class="p-2 border border-neutral-600">{{ hero.maxHealth }}</td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Health Regen
-                </td>
-                <td class="p-2 border border-neutral-600">{{ hero.regen }}</td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Bullet Resist
-                </td>
-                <td class="p-2 border border-neutral-600">
-                  {{ hero.bulletResist }}%
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Spirit Resist
-                </td>
-                <td class="p-2 border border-neutral-600">
-                  {{ hero.spiritResist }}%
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Move Speed
-                </td>
-                <td class="p-2 border border-neutral-600">
-                  {{ hero.moveSpeed }} m/s
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">
-                  Spring Speed
-                </td>
-                <td class="p-2 border border-neutral-600">
-                  {{ hero.sprintSpeed }} m/s
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border border-neutral-600 bg-tertriary">Stamina</td>
-                <td class="p-2 border border-neutral-600">{{ hero.stamina }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </app-content-block>
-      </section>
-  </div>
+      @if (builds$ | async; as builds) {
+        <section class="col-span-2 max-h-64">
+          <app-content-block blockTitle="{{ hero.name }} Builds">
+            @for (build of builds; track $index) {
+              <div class="overflow-y-scroll">
+                <a routerLink="/build/{{ build.buildId }}">
+                  <div class="border-b border-neutral-500 last:border-b-0">
+                    <h3 class="text-lg font-medium">{{ build.name }}</h3>
+                    <p class="text-sm font-light text-gray-400 truncate">
+                      {{ build.description }}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            } @empty {
+              <p>No builds found</p>
+            }
+          </app-content-block>
+        </section>
+      }
 
-</div>
+      <app-content-block blockTitle="Weapon stats">
+        <table class="w-full table-fixed text-gray-300">
+          <tbody class="text-left font-normal border">
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">DPS</td>
+              <td class="p-2 border border-neutral-600">{{ hero.dps }}</td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Bullet Damage
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.bulletDamage }}
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">Ammo</td>
+              <td class="p-2 border border-neutral-600">{{ hero.ammo }}</td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Bullets per Second
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.bulletPerSeconds }}
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Light Melee
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.lightMelee }}
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Heavy Melee
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.heavyMelee }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </app-content-block>
+
+      <app-content-block blockTitle="Vitality stats">
+        <table class="w-full table-fixed text-gray-300">
+          <tbody class="text-left font-normal border">
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Max Health
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.maxHealth }}
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Health Regen
+              </td>
+              <td class="p-2 border border-neutral-600">{{ hero.regen }}</td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Bullet Resist
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.bulletResist }}%
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Spirit Resist
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.spiritResist }}%
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Move Speed
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.moveSpeed }} m/s
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Spring Speed
+              </td>
+              <td class="p-2 border border-neutral-600">
+                {{ hero.sprintSpeed }} m/s
+              </td>
+            </tr>
+            <tr>
+              <td class="p-2 border border-neutral-600 bg-tertriary">
+                Stamina
+              </td>
+              <td class="p-2 border border-neutral-600">{{ hero.stamina }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </app-content-block>
+    </section>
+  </div>
 }
