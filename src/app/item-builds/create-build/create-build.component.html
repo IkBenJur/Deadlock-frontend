@@ -1,4 +1,4 @@
-<form [formGroup]="buildForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="buildForm" (ngSubmit)="onSubmit()" class="relative">
   <div class="sm:grid sm:grid-cols-3 sm:gap-1">
 
     <div class="border-2 border-neutral-600 rounded-md h-full max-sm:mb-2">
@@ -35,7 +35,7 @@
   <div class="my-4">
     <app-item-set-display
       [name]="itemSet.name"
-      [items]="itemSet.items"
+      [selectedItems]="itemSet.items"
       (updatedItems)="getUpdatedItems(itemSet, $event)"
       (removeItemSet)="removeItemSet(itemSet)"
       (updatedName)="getUpdatedName(itemSet, $event)"

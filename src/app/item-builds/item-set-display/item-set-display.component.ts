@@ -1,18 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from '../../../types/item';
 import { ItemCardComponent } from '../item-card/item-card.component';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { ItemService } from '../../item.service';
 
 @Component({
   selector: 'app-item-set-display',
   standalone: true,
-  imports: [ItemCardComponent, CommonModule, FormsModule],
+  imports: [ItemCardComponent, CommonModule, FormsModule, AsyncPipe],
   templateUrl: './item-set-display.component.html',
 })
 export class ItemSetDisplayComponent {
   @Input() name!: String;
-  @Input() items!: Item[];
+  @Input() selectedItems!: Item[];
+  items$!: Observable<Item[]>
 
   @Output() updatedName = new EventEmitter<String>();
   @Output() updatedItems = new EventEmitter<Item[]>();
@@ -20,7 +23,11 @@ export class ItemSetDisplayComponent {
 
   isEditEnable = false;
 
-  constructor() {}
+  constructor(private itemService: ItemService) {}
+
+  ngOnInit() {
+    this.items$ = this.itemService.getAllItems();
+  }
 
   onEdit() {
     this.isEditEnable = !this.isEditEnable;
@@ -31,34 +38,18 @@ export class ItemSetDisplayComponent {
     this.updatedName.emit(this.name)
   }
 
-  addItem() {
-    this.items.push({
-      itemId: 1,
-      name: 'Basic Magazine',
-      cost: 500,
-      type: 'Weapon',
-      active: false,
-      effects: [
-        {
-          itemEffectId: 2,
-          effect: '+15% Weapon Damage',
-        },
-        {
-          itemEffectId: 1,
-          effect: '+24% Ammo',
-        },
-      ],
-    });
+  addItem(item: Item) {
+    this.selectedItems.push(item);
 
-    this.updatedItems.emit(this.items);
+    this.updatedItems.emit(this.selectedItems);
   }
 
   removeItem(item: Item) {
-    const index = this.items.findIndex((i) => i == item);
+    const index = this.selectedItems.findIndex((i) => i == item);
 
     if (index != -1) {
-      this.items.splice(index, 1);
-      this.updatedItems.emit(this.items);
+      this.selectedItems.splice(index, 1);
+      this.updatedItems.emit(this.selectedItems);
     }
   }
 

@@ -23,7 +23,10 @@
       />
       }
     </div>
-    <div class="my-auto bg-accent py-1 px-2 rounded-md hover:opacity-80 hover:cursor-pointer" (click)="remove()">
+    <div
+      class="my-auto bg-accent py-1 px-2 rounded-md hover:opacity-80 hover:cursor-pointer"
+      (click)="remove()"
+    >
       Remove item set
     </div>
   </div>
@@ -31,14 +34,35 @@
   <div
     class="bg-tertriary p-2 grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-12"
   >
-    @for (item of items; track $index) {
-    <app-item-card [item]="item" (click)="removeItem(item)"></app-item-card>
+    @for (item of selectedItems; track $index) {
+    <app-item-card [item]="item" (click)="removeItem(item)" class="hover:cursor-pointer"></app-item-card>
     }
     <div
       class="w-full max-w-36 h-36 bg-gray-500 mx-auto border-2 border-dashed rounded-lg content-center text-center text-4 font-bold opacity-60 hover:opacity-70 hover:cursor-pointer"
-      (click)="addItem()"
+      (click)="itemDialog.show()"
     >
       +
     </div>
   </div>
 </div>
+
+<dialog
+  #itemDialog
+  class="p-2 bg-tertriary absolute shadow-lg h-fit max-h-96 w-4/5 overflow-scroll overflow-x-hidden top-0 left-0 z-10"
+>
+  <div>
+    <input
+      class="my-auto bg-accent border-0 text-white py-1 px-2 rounded-md hover:opacity-80 hover:cursor-pointer"
+      type="button"
+      value="Close"
+      (click)="itemDialog.close()"
+    />
+  </div>
+  <div
+    class="p-2 grid gap-2 grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-12"
+  >
+    @if (items$ | async; as items) { @for (item of items; track $index) {
+    <app-item-card [item]="item" (click)="addItem(item)" class="hover:cursor-pointer"></app-item-card>
+    } }
+  </div>
+</dialog>
