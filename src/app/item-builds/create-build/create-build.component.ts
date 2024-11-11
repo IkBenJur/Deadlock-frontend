@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ItemSetDisplayComponent } from '../item-set-display/item-set-display.component';
+import { Item } from '../../../types/item';
 
 @Component({
   selector: 'app-create-build',
@@ -51,25 +52,15 @@ export class CreateBuildComponent {
     });
   }
 
-  addItemToItemSet(set: ItemSet) {
-    set.items.push({
-      itemId: 1,
-      name: 'Basic Magazine',
-      cost: 500,
-      type: 'Weapon',
-      active: false,
-      effects: [
-        {
-          itemEffectId: 2,
-          effect: '+15% Weapon Damage',
-        },
-        {
-          itemEffectId: 1,
-          effect: '+24% Ammo',
-        },
-      ],
-    });
+  getUpdatedItems(set: ItemSet, items: Item[]){
+    set.items = items;
 
+    console.log(this.buildForm.value)
+  }
+
+  getUpdatedName(set: ItemSet, name: String) {
+    set.name = name;
+    
     console.log(this.buildForm.value)
   }
 

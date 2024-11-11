@@ -33,23 +33,12 @@
 
   @for (itemSet of itemSets; track $index) {
   <div class="my-4">
-    <div class="flex gap-1 px-4 mb-2">
-      <div
-        class="p-1 text-sm font-bold text-gray-800 bg-neutral-500 border border-neutral-700 rounded-lg hover:bg-neutral-600 hover:text-gray-900 hover:cursor-pointer"
-        (click)="addItemToItemSet(itemSet)"
-      >
-        Add item
-      </div>
-      <div
-        class="p-1 text-sm font-bold text-gray-800 bg-neutral-500 border border-neutral-700 rounded-lg hover:bg-neutral-600 hover:text-gray-900 hover:cursor-pointer"
-        (click)="removeItemSet(itemSet)"
-      >
-        Remove item set
-      </div>
-    </div>
     <app-item-set-display
       [name]="itemSet.name"
       [items]="itemSet.items"
+      (updatedItems)="getUpdatedItems(itemSet, $event)"
+      (removeItemSet)="removeItemSet(itemSet)"
+      (updatedName)="getUpdatedName(itemSet, $event)"
     ></app-item-set-display>
   </div>
   }
