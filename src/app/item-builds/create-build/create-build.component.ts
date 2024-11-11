@@ -6,14 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ItemSetDisplayComponent } from '../item-set-display/item-set-display.component';
+import { ItemSetDisplayFormComponent } from '../item-set-display-form/item-set-display.component-form';
 import { Item } from '../../../types/item';
 import { BuildService } from '../../../services/build.service';
 
 @Component({
   selector: 'app-create-build',
   standalone: true,
-  imports: [ReactiveFormsModule, ItemSetDisplayComponent],
+  imports: [ReactiveFormsModule, ItemSetDisplayFormComponent],
   templateUrl: './create-build.component.html',
 })
 export class CreateBuildComponent {

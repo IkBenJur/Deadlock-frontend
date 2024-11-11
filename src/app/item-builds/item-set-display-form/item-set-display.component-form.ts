@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 import { ItemService } from '../../../services/item.service';
 
 @Component({
-  selector: 'app-item-set-display',
+  selector: 'app-item-set-display-form',
   standalone: true,
   imports: [ItemCardComponent, CommonModule, FormsModule, AsyncPipe],
-  templateUrl: './item-set-display.component.html',
+  templateUrl: './item-set-display-form.component.html',
 })
-export class ItemSetDisplayComponent {
+export class ItemSetDisplayFormComponent {
   @Input() name!: String;
   @Input() selectedItems!: Item[];
   items$!: Observable<Item[]>

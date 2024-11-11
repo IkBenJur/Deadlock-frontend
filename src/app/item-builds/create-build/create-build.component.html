@@ -33,13 +33,13 @@
 
   @for (itemSet of itemSets; track $index) {
   <div class="my-4">
-    <app-item-set-display
+    <app-item-set-display-form
       [name]="itemSet.name"
       [selectedItems]="itemSet.items"
       (updatedItems)="getUpdatedItems(itemSet, $event)"
       (removeItemSet)="removeItemSet(itemSet)"
       (updatedName)="getUpdatedName(itemSet, $event)"
-    ></app-item-set-display>
+    ></app-item-set-display-form>
   </div>
   }
   <div
